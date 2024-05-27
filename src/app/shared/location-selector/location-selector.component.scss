@@ -1,14 +1,20 @@
-.location-selector{
-  margin: 16px;
+@use '@angular/material' as mat;
 
-  &-container{
+.location-selector {
+
+  &-container {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: flex-start;
 
-    mat-form-field{
-      width: 280px;
+    mat-form-field {
+      width: 220px;
     }
   }
+}
+
+
+.reduced-size {
+  @include mat.all-component-densities(-8);
 }

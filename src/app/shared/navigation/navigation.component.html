@@ -25,26 +25,28 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
-      @if (isHandset$ | async) {
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      }
-      <span style="color: white;">YowHood</span>
-      <span class="spacer"></span>
-      <mat-nav-list class="primary-navigation">
-        <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon aria-hidden="false"
-            aria-label="Example home icon" fontIcon="home" ></mat-icon>
-          Home</a>
+      <mat-toolbar-row>
+        @if (isHandset$ | async) {
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        }
+        <header class="headline">YowHood</header>
+        <span class="spacer"></span>
+        <mat-nav-list class="primary-navigation">
+          <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon
+              aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+            Home</a>
 
-        <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon aria-hidden="false"
-            aria-label="Example home icon" fontIcon="info" ></mat-icon>
-          About Us</a>
-        <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon aria-hidden="false"
-            aria-label="Example home icon" fontIcon="phone" ></mat-icon>
-          Contact Us</a>
-          
-          <a mat-button class="account-menu-button" [matMenuTriggerFor]="menu" aria-label="Example icon button with a vertical three dot icon">
+          <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon
+              aria-hidden="false" aria-label="Example home icon" fontIcon="info"></mat-icon>
+            About Us</a>
+          <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon
+              aria-hidden="false" aria-label="Example home icon" fontIcon="phone"></mat-icon>
+            Contact Us</a>
+
+          <a mat-button class="account-menu-button" [matMenuTriggerFor]="menu"
+            aria-label="Example icon button with a vertical three dot icon">
             <mat-icon fontIcon="account_circle"></mat-icon><span style="color: white;">Jared Bada</span>
           </a>
 
@@ -65,8 +67,14 @@
           </mat-menu>
 
 
-      </mat-nav-list>
+        </mat-nav-list>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="secondary-toolbar">
+        <yh-location-selector></yh-location-selector>
+      </mat-toolbar-row>
     </mat-toolbar>
+
+    <h1 class="title">House Rentals</h1>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

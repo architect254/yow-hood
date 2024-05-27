@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { LocationSelectorComponent } from '../../shared/location-selector/location-selector.component';
+import { CardComponent } from '../../feature/card/card.component';
 
 @Component({
   selector: 'yh-house-rental',
   standalone: true,
-  imports: [LocationSelectorComponent],
+  imports: [CardComponent],
   templateUrl: './house-rental.component.html',
   styleUrl: './house-rental.component.scss'
 })

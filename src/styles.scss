@@ -28,24 +28,16 @@ $yow-hood-theme: mat.define-theme((
   )
 ));
 
-@include mat.color-variants-backwards-compatibility($yow-hood-theme);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 :root {
   @include mat.all-component-themes($yow-hood-theme);
   @include mat.typography-hierarchy($yow-hood-theme);
+  @include mat.color-variants-backwards-compatibility($yow-hood-theme);
 
   @include navigation.theme($yow-hood-theme);
   @include location.theme($yow-hood-theme);
-
 }
 
-
-/* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
-
 
 html, body { height: 100%; }
 body { margin: 0; font-family: "Poppins", sans-serif; }

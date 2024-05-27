@@ -19,21 +19,34 @@
 .primary-navigation{
   display: flex;
 }
+
 .pn-buttons{
   margin: 4px;
 }
+
 .account-menu-button{
   color: white;
   margin: 4px;
 }
+
 a{
   text-decoration: none;
 }
+
 .mat-mdc-nav-list .mat-mdc-list-item{
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
 .mdc-list{
   margin: 16px;
   margin-left: 0;
+}
+
+.secondary-toolbar{
+  padding-top: 16px;
+}
+
+h1.title{
+  margin: 16px;
 }

@@ -1,0 +1,26 @@
+@for (item of [1,2,3,4,5,6,7,8,9]; track $index) {
+<mat-card class="card">
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <section class="title">
+     <h2 class="mat-headline-medium"> One Bedroom Maisonette</h2>
+    </section>
+    <section class="info">
+      @for (item of [1,2,]; track $index) {
+      <section class="article">
+        @for (item of [1,2]; track $index) {
+        <article>
+          <div class="label mat-title-medium">
+            number of rooms
+          </div>
+          <div class="value mat-display-medium">
+            10
+          </div>
+        </article>
+        }
+      </section>
+      }
+    </section>
+  </mat-card-content>
+</mat-card>
+}

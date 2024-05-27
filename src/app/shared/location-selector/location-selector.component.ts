@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import {
   FormArray,
   FormBuilder,
@@ -37,18 +37,22 @@ export class LocationSelectorComponent {
     ]),
   });
 
+  locations =[
+    {name:"Mombasa", id:0, pid:0}
+  ];
+
   currentLocationIndex = 0;
   constructor(private _fb: FormBuilder) {}
 
-  get locations() {
+  get locationsCtrls() {
     return this.locationForm.get('locations') as FormArray;
   }
 
   addLocation(location: FormControl){
-    this.locations.push(location)
+    this.locationsCtrls.push(location)
   }
 
-  onSelectLocation(){
+  onSelectLocation(selectionChangeEvt:MatSelectChange){
     switch (this.currentLocationIndex) {
       case 0:
         this.addLocation(this._fb.control({subCounty:['',Validators.required]}))
@@ -69,7 +73,7 @@ export class LocationSelectorComponent {
   removeLocation(index:number){
     let lastLocationIndex = this.currentLocationIndex;
     do {
-      this.locations.removeAt(lastLocationIndex--)
+      this.locationsCtrls.removeAt(lastLocationIndex--)
     } while (lastLocationIndex >= index);
   }
 

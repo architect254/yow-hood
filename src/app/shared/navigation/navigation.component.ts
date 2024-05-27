@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterOutlet } from '@angular/router';
+import { LocationSelectorComponent } from '../location-selector/location-selector.component';
 
 @Component({
   selector: 'yh-navigation',
@@ -24,7 +25,8 @@ import { RouterOutlet } from '@angular/router';
     MatIconModule,
     MatMenuModule,
     AsyncPipe,
-    RouterOutlet
+    RouterOutlet,
+    LocationSelectorComponent
   ]
 })
 export class NavigationComponent {
