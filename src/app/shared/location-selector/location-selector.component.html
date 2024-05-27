@@ -1,0 +1,31 @@
+<section class="location-selector mat-typography">
+  <form class="location-selector-container" (ngSubmit)="0" [formGroup]="locationForm">
+
+  @for (location of locations.controls; track $index) {
+    <mat-form-field appearance="outline" formArrayName="locations" >
+      <mat-label>{{locationName($index)}}</mat-label>
+      <input
+        type="text"
+        name="location"
+        [formArrayName]="$index"
+        matInput
+        placeholder="Ex. Mombasa"
+        (blur)="onSelectLocation()"
+      />
+      <mat-icon matPrefix class="material-icons-two-toned"
+        >apartment</mat-icon
+      >
+      <mat-icon matSuffix class="material-icons-two-toned" (click)="removeLocation($index)"
+        >close</mat-icon
+      >
+      <mat-error>
+        Username is required
+      </mat-error>
+    </mat-form-field>
+    
+  }
+
+  </form>
+  <h1 class="heading">House Rentals</h1>
+
+</section>

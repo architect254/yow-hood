@@ -1,0 +1,14 @@
+.location-selector{
+  margin: 16px;
+
+  &-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+
+    mat-form-field{
+      width: 280px;
+    }
+  }
+}

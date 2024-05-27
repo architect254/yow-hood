@@ -1,0 +1,72 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list class="secondary-navigation">
+      <mat-list-item [activated]="true">
+        <a matListItemTitle routerLink="" routerLinkActive="sn-active">House Rentals</a>
+        <button mat-icon-button (click)="0" matListItemMeta>
+          <mat-icon>apartment</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item [activated]="false">
+        <a matListItemTitle href="...">Car Rentals</a>
+        <button mat-icon-button (click)="0" matListItemMeta>
+          <mat-icon>commute</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item [activated]="false">
+        <a matListItemTitle href="...">Real Estate Trades</a>
+        <button mat-icon-button (click)="0" matListItemMeta>
+          <mat-icon>real_estate_agent</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      @if (isHandset$ | async) {
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      }
+      <span style="color: white;">YowHood</span>
+      <span class="spacer"></span>
+      <mat-nav-list class="primary-navigation">
+        <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon aria-hidden="false"
+            aria-label="Example home icon" fontIcon="home" ></mat-icon>
+          Home</a>
+
+        <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon aria-hidden="false"
+            aria-label="Example home icon" fontIcon="info" ></mat-icon>
+          About Us</a>
+        <a mat-flat-button class="pn-buttons" href="https://www.google.com/" target="_blank"><mat-icon aria-hidden="false"
+            aria-label="Example home icon" fontIcon="phone" ></mat-icon>
+          Contact Us</a>
+          
+          <a mat-button class="account-menu-button" [matMenuTriggerFor]="menu" aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon fontIcon="account_circle"></mat-icon><span style="color: white;">Jared Bada</span>
+          </a>
+
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>person</mat-icon>
+              <span>My Profile</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>manage_accounts</mat-icon>
+              <span>Account Settings</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+
+
+      </mat-nav-list>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
