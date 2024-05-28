@@ -4,7 +4,7 @@
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 
-@use './app/shared/navigation/navigation.theme' as navigation;
+@use './app/core/navigation/navigation.theme' as navigation;
 @use './app/shared/location-selector/location-selector.theme' as location;
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -35,6 +35,10 @@ $yow-hood-theme: mat.define-theme((
 
   @include navigation.theme($yow-hood-theme);
   @include location.theme($yow-hood-theme);
+
+  .reduced-size {
+    @include mat.all-component-densities(-8);
+  }
 }
 
 @import 'bootstrap/scss/bootstrap';

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CardComponent } from '../../feature/card/card.component';
+import { GridComponent } from '../../feature/grid/grid.component';
 
 @Component({
   selector: 'yh-house-rental',
   standalone: true,
-  imports: [CardComponent],
+  imports: [GridComponent],
   templateUrl: './house-rental.component.html',
   styleUrl: './house-rental.component.scss'
 })

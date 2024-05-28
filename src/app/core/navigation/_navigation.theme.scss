@@ -5,17 +5,19 @@
   .mat-toolbar {
     background-color: mat.get-theme-color($yow-hood-theme, primary, 30);
   }
+
   .secondary-toolbar{
     background-color: mat.get-theme-color($yow-hood-theme, primary, 95);
   }
 }
 
 @mixin typography($yow-hood-theme) {
-  header.headline {
+  .app-name {
     font: mat.get-theme-typography($yow-hood-theme, display-small, font);
     color: mat.get-theme-color($yow-hood-theme, secondary, 100);
   }
-  h1.title{
+
+  .page-title{
     font: mat.get-theme-typography($yow-hood-theme, headline-large, font);
     color: mat.get-theme-color($yow-hood-theme, primary, 30);
   }
@@ -25,7 +27,12 @@
   @if mat.theme-has($yow-hood-theme, color) {
     @include color($yow-hood-theme);
   }
+
   @if mat.theme-has($yow-hood-theme, typography) {
     @include typography($yow-hood-theme);
   }
+}
+
+.reduced-size {
+  @include mat.all-component-densities(-8);
 }

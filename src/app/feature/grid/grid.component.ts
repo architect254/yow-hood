@@ -4,13 +4,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'yh-card',
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.scss',
+  selector: 'yh-grid',
   standalone: true,
   imports: [MatCardModule,MatButtonModule],
+  templateUrl: './grid.component.html',
+  styleUrl: './grid.component.scss',
 })
-export class CardComponent {
+export class GridComponent {
   @Input() imageUrl: string | undefined;
   @Input() heading: string | undefined;
   @Input() about: string | undefined;

@@ -7,8 +7,14 @@
   }
 }
 
+@mixin typography($yow-hood-theme) {}
+
 @mixin theme($yow-hood-theme) {
   @if mat.theme-has($yow-hood-theme, color) {
     @include color($yow-hood-theme);
+  }
+
+  @if mat.theme-has($yow-hood-theme, typography) {
+    @include typography($yow-hood-theme);
   }
 }

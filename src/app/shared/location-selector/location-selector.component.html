@@ -1,18 +1,16 @@
-<section class="location-selector mat-typography">
-  <form class="location-selector-container" (ngSubmit)="0" [formGroup]="locationForm">
+  <form class="container" (ngSubmit)="0" [formGroup]="locationForm">
 
     @for (location of locationsCtrls.controls; track $index) {
-    <mat-form-field appearance="outline" formArrayName="locations" class="reduced-size">
+    <mat-form-field appearance="outline" formArrayName="locations" class="location-selector-control reduced-size">
       <mat-label>{{locationName($index)}}</mat-label>
       <mat-select (selectionChange)="onSelectLocation($event)">
         @for (option of locations; track option) {
         <mat-option [value]="option.id">{{option.name}}</mat-option>
         }
       </mat-select>
-      <mat-icon matPrefix class="material-icons-two-toned">apartment</mat-icon>
-      <mat-icon matSuffix class="material-icons-two-toned" (click)="removeLocation($index)">close</mat-icon>
+      <mat-icon matPrefix>apartment</mat-icon>
+      <mat-icon matSuffix (click)="removeLocation($index)">close</mat-icon>
     </mat-form-field>
     }
 
   </form>
-</section>

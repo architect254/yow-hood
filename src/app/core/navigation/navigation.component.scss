@@ -1,0 +1,71 @@
+.sidenav-container {
+  height: 100%;
+
+  .sidenav {
+    width: 300px;
+
+    .mat-toolbar {
+      background: inherit;
+
+      &.mat-primary {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  .primary-navigation {
+    display: flex;
+
+    .primary-nav-buttons {
+      margin: 4px;
+    }
+
+    .account-menu-button {
+      color: white;
+      margin: 4px;
+    }
+  }
+}
+
+.filter,
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-header {
+  margin: 32px 0 16px 0;
+
+  .filter {
+    gap: 12px;
+  }
+}
+
+.page-title {
+  margin: 16px 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+:host {
+  ::ng-deep {
+    .mat-mdc-list-item {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .mdc-list {
+      margin: 16px;
+      margin-left: 0;
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+  }
+}
