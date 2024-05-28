@@ -1,10 +1,10 @@
-.container {
+.location-selector {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: flex-start;
 
-    .location-selector-control {
+    .selector-control {
       width: 220px;
     }
   }

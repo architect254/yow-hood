@@ -9,6 +9,10 @@
   .secondary-toolbar{
     background-color: mat.get-theme-color($yow-hood-theme, primary, 95);
   }
+
+  .add-icon{
+    color: mat.get-theme-color($yow-hood-theme, primary, 30);
+  }
 }
 
 @mixin typography($yow-hood-theme) {

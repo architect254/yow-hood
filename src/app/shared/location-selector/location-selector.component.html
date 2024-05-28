@@ -1,7 +1,7 @@
-  <form class="container" (ngSubmit)="0" [formGroup]="locationForm">
+  <form class="location-selector" (ngSubmit)="0" [formGroup]="locationForm">
 
     @for (location of locationsCtrls.controls; track $index) {
-    <mat-form-field appearance="outline" formArrayName="locations" class="location-selector-control reduced-size">
+    <mat-form-field appearance="outline" formArrayName="locations" class="selector-control reduced-size">
       <mat-label>{{locationName($index)}}</mat-label>
       <mat-select (selectionChange)="onSelectLocation($event)">
         @for (option of locations; track option) {
