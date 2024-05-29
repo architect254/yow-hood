@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { LocationSelectorComponent } from '../../shared/location-selector/location-selector.component';
+import { GridComponent } from '../../feature/grid/grid.component';
 
 @Component({
   selector: 'yh-house-rental',
   standalone: true,
-  imports: [LocationSelectorComponent],
+  imports: [GridComponent],
   templateUrl: './house-rental.component.html',
   styleUrl: './house-rental.component.scss'
 })

@@ -4,7 +4,8 @@
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 
-@use './app/shared/navigation/navigation.theme' as navigation;
+@use './app/core/navigation/navigation.theme' as navigation;
+@use './app/shared/logo/logo.theme' as logo;
 @use './app/shared/location-selector/location-selector.theme' as location;
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -28,24 +29,21 @@ $yow-hood-theme: mat.define-theme((
   )
 ));
 
-@include mat.color-variants-backwards-compatibility($yow-hood-theme);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 :root {
   @include mat.all-component-themes($yow-hood-theme);
   @include mat.typography-hierarchy($yow-hood-theme);
+  @include mat.color-variants-backwards-compatibility($yow-hood-theme);
 
   @include navigation.theme($yow-hood-theme);
+  @include logo.theme($yow-hood-theme);
   @include location.theme($yow-hood-theme);
 
+  .reduced-size {
+    @include mat.all-component-densities(-8);
+  }
 }
 
-
-/* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
-
 
 html, body { height: 100%; }
 body { margin: 0; font-family: "Poppins", sans-serif; }

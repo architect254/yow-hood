@@ -7,9 +7,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterOutlet } from '@angular/router';
+import { LocationSelectorComponent } from '../../shared/location-selector/location-selector.component';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'yh-navigation',
@@ -23,12 +28,19 @@ import { RouterOutlet } from '@angular/router';
     MatListModule,
     MatIconModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
     AsyncPipe,
-    RouterOutlet
+    RouterOutlet,
+    LocationSelectorComponent,
+    MatButtonToggleModule
   ]
 })
 export class NavigationComponent {
   private breakpointObserver = inject(BreakpointObserver);
+
+  searchCtrl: FormControl = new FormControl();
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
