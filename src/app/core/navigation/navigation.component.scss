@@ -4,6 +4,13 @@
   .sidenav {
     width: 300px;
 
+    .mobile-navigation{
+      height: 320px;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+
     .mat-toolbar {
       background: inherit;
 

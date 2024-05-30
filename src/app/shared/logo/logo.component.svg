@@ -1,8 +1,6 @@
-@if(animationCompleted){
-        <svg [attr.width]="size" [attr.height]="size" viewBox="0 0 400 400" class="logo" xmlns="http://www.w3.org/2000/svg" @animationCompleted>
-    <rect width="400" height="400" class="logo-container"/>
-    <path d="M42 232V22H106V148H148V22H190V378H42V316H148V232H42Z" class="logo-main"/>
-    <path d="M358 378V22H294V148H252V22H210V378H252V232H294V378H358Z" class="logo-main"/>
-    <path d="M190 378V22H210V378H190Z" class="logo-separator"/>
-    </svg>
-}
+<svg [attr.width]="size" [attr.height]="size" viewBox="0 0 400 400" class="logo" xmlns="http://www.w3.org/2000/svg" @animationCompleted>
+<rect width="400" height="400" class="logo-container"/>
+<path d="M42 232V22H106V148H148V22H190V378H42V316H148V232H42Z" class="logo-main"/>
+<path d="M358 378V22H294V148H252V22H210V378H252V232H294V378H358Z" class="logo-main"/>
+<path d="M190 378V22H210V378H190Z" class="logo-separator"/>
+</svg>
