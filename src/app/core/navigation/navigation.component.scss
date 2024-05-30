@@ -3,12 +3,22 @@
 
   .sidenav {
     width: 300px;
+    border-radius: 0;
 
     .mobile-navigation{
       height: 320px;
       justify-content: center;
       align-items: center;
       padding: 0;
+    }
+
+    .footer{
+      position: absolute;
+      bottom: 0;
+
+      small{
+        margin: auto;
+      }
     }
 
     .mat-toolbar {

@@ -10,6 +10,11 @@
     background-color: mat.get-theme-color($yow-hood-theme, primary, 95);
   }
 
+  .footer{
+    background-color: lighten(mat.get-theme-color($yow-hood-theme, primary, 30), 10) !important;
+    color: mat.get-theme-color($yow-hood-theme, primary, 99) !important;
+  }
+
   .add-icon{
     color: mat.get-theme-color($yow-hood-theme, primary, 30);
   }
