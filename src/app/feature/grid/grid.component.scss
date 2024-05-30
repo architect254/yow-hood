@@ -1,37 +1,50 @@
 @use '@angular/material' as mat;
 
 :host {
+  --grid-height: none;
+  --grid-width: none;
+}
+
+.viewport,
+.grid {
+  height: var(--grid-height);
+  width: var(--grid-width);
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-gap: 20px;
   align-items: stretch;
-}
+  overflow: auto;
 
-.card {
-  @include mat.elevation-transition();
-  @include mat.elevation(2);
+  .card {
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
 
-  &:hover {
-    @include mat.elevation(12);
-  }
+    &:hover {
+      @include mat.elevation(12);
+    }
 
-  .title {
-    margin-top: 16px;
-  }
+    .title {
+      margin-top: 16px;
+    }
 
-  .info {
-    .article {
-      display: flex;
-      flex: 1;
-      flex-wrap: wrap;
-      gap: 16px;
+    .info {
+      .article {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        gap: 16px;
 
-      .label {
-        color: lighten(black, 45%);
-        text-transform: uppercase;
+        .label {
+          color: lighten(black, 45%);
+          text-transform: uppercase;
+        }
       }
     }
   }
+
 }
 
 :host {

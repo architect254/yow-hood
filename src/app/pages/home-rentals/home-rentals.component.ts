@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
-
-import { NavigationComponent } from './core/navigation/navigation.component';
-import { PageDirective } from './core/page/page.directive';
+import { Component, OnInit } from '@angular/core';
+import { GridComponent } from '../../feature/grid/grid.component';
+import { PageDirective } from '../../core/page/page.directive';
 
 @Component({
-  selector: 'root',
+  selector: 'yh-home-rentals',
   standalone: true,
-  imports: [NavigationComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  imports: [GridComponent],
+  templateUrl: './home-rentals.component.html',
+  styleUrl: './home-rentals.component.scss',
 })
-export class AppComponent extends PageDirective {
+export class HomeRentalsComponent extends PageDirective implements OnInit {
+  override ngOnInit(): void {
+    
+  }
+
   override setTwitterCardMeta(): void {
     this.setMeta([
       {
@@ -90,7 +93,7 @@ export class AppComponent extends PageDirective {
   }
 
   override setDefaultMetaAndTitle(): void {
-    this.setTitle(`YowHood - Wholesome Services For YowHood`);
+    this.setTitle(`YowHood - Home Rentals | YowHood`);
     this.setMeta([
       {
         name: `description`,

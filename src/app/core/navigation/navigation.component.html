@@ -4,7 +4,7 @@
     <mat-toolbar class="mobile-navigation"><yh-logo></yh-logo></mat-toolbar>
     <mat-nav-list class="secondary-navigation">
       <mat-list-item [activated]="true">
-        <a matListItemTitle routerLink="" routerLinkActive="sn-active">House Rentals</a>
+        <a matListItemTitle routerLink="/home-rentals" routerLinkActive="sn-active">Home Rentals</a>
         <button mat-icon-button (click)="0" matListItemMeta>
           <mat-icon>apartment</mat-icon>
         </button>
@@ -24,7 +24,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar id="toolbar">
       <mat-toolbar-row class="container primary-toolbar">
         @if (isHandset$ | async) {
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
@@ -74,8 +74,8 @@
       </mat-toolbar-row>
     </mat-toolbar>
 
-    <header class="container filter-header">
-      <h1 class="page-title">House Rentals</h1>
+    <header class="container filter-header" id="header">
+      <h1 class="page-title">Home Rentals</h1>
       <section class="filter">
         <button mat-icon-button color="primary" aria-label="Example icon button with a vertical three dot icon">
           <mat-icon class="add-icon">add</mat-icon>
@@ -109,7 +109,7 @@
         </mat-menu>
       </section>
     </header>
-    <section class="container">
+    <section class="container" id="container">
       <router-outlet></router-outlet>
     </section>
   </mat-sidenav-content>

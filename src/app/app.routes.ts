@@ -1,7 +1,18 @@
 import { Routes } from '@angular/router';
-import { HouseRentalComponent } from './pages/house-rental/house-rental.component';
+
+import { HomeRentalsComponent } from './pages/home-rentals/home-rentals.component';
+import { HouseDetailsComponent } from './pages/house-details/house-details.component';
 
 export const routes: Routes = [
-    {path:"house-rental", component: HouseRentalComponent},
-    {path:"", redirectTo:"/house-rental", pathMatch:'full'}
+  {
+    path: 'home-rentals',
+    component: HomeRentalsComponent,
+    data: { title: 'Home Rentals' },
+  },
+  {
+    path: 'house-details',
+    component: HouseDetailsComponent,
+    data: { title: 'House Details' },
+  },
+  { path: '', redirectTo: '/home-rentals', pathMatch: 'full' },
 ];
