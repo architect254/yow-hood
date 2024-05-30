@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'yh-grid',
   standalone: true,
-  imports: [MatCardModule,MatButtonModule],
+  imports: [MatCardModule, MatButtonModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss',
 })

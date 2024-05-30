@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar class="mobile-navigation"><yh-logo></yh-logo></mat-toolbar>
     <mat-nav-list class="secondary-navigation">
       <mat-list-item [activated]="true">
         <a matListItemTitle routerLink="" routerLinkActive="sn-active">House Rentals</a>

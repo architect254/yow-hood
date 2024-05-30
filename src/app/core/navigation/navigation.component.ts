@@ -15,6 +15,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { RouterOutlet } from '@angular/router';
 import { LocationSelectorComponent } from '../../shared/location-selector/location-selector.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { LogoComponent } from '../../shared/logo/logo.component';
 
 @Component({
   selector: 'yh-navigation',
@@ -34,6 +35,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
     AsyncPipe,
     RouterOutlet,
     LocationSelectorComponent,
+    LogoComponent,
     MatButtonToggleModule
   ]
 })
