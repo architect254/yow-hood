@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GridComponent } from '../../feature/grid/grid.component';
-import { PageDirective } from '../../core/page/page.directive';
+import { PageDirective } from '../../shared/page/page.directive';
 
 @Component({
   selector: 'yh-home-rentals',

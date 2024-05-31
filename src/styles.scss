@@ -4,7 +4,7 @@
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 
-@use './app/core/navigation/navigation.theme' as navigation;
+@use './app/core/layout/layout.theme' as layout;
 @use './app/shared/location-selector/location-selector.theme' as location;
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -33,7 +33,7 @@ $yow-hood-theme: mat.define-theme((
   @include mat.typography-hierarchy($yow-hood-theme);
   @include mat.color-variants-backwards-compatibility($yow-hood-theme);
 
-  @include navigation.theme($yow-hood-theme);
+  @include layout.theme($yow-hood-theme);
   @include location.theme($yow-hood-theme);
 
   .reduced-size {

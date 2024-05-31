@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
-import { NavigationComponent } from './core/navigation/navigation.component';
-import { PageDirective } from './core/page/page.directive';
+import { PageDirective } from './shared/page/page.directive';
 
 @Component({
   selector: 'root',
   standalone: true,
-  imports: [NavigationComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

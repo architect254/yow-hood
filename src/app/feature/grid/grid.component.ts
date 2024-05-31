@@ -32,20 +32,9 @@ export class GridComponent implements OnInit {
       this.gridHeight = window.innerHeight - (toolbarHeight + headerHeight);
       this.gridWidth = containerWidth;
     }
-    console.log(
-      'gh',
-      this.gridHeight,
-      'th',
-      toolbarHeight,
-      'hh',
-      headerHeight,
-      'cw',
-      containerWidth
-    );
   }
 
   onScrolledIndexChange(index: number) {
     this.scrolledIndex = index;
-    console.log('scrolled', this.scrolledIndex);
   }
 }
