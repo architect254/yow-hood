@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .card {
     @include mat.elevation-transition();
     @include mat.elevation(2);
