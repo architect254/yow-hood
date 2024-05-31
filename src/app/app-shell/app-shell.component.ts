@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'yh-app-shell',
+  selector: 'app-shell',
   standalone: true,
   imports: [],
   templateUrl: './app-shell.component.html',

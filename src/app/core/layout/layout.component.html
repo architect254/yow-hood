@@ -7,7 +7,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar class="mobile-navigation"><yh-logo></yh-logo></mat-toolbar>
+    <mat-toolbar class="mobile-navigation"><logo></logo></mat-toolbar>
     <mat-nav-list class="secondary-navigation">
       <mat-list-item [activated]="true">
         <a
@@ -120,7 +120,7 @@
         </mat-nav-list>
       </mat-toolbar-row>
       <mat-toolbar-row class="secondary-toolbar">
-        <yh-location-selector class="container"></yh-location-selector>
+        <location-selector class="container"></location-selector>
       </mat-toolbar-row>
     </mat-toolbar>
 

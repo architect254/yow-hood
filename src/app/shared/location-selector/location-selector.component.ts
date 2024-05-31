@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import {
@@ -16,8 +16,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 
+import { Observable } from 'rxjs';
+
+import { LocationSelectorService } from './location-selector.service';
+
+import { Location } from '../../model/location';
+
 @Component({
-  selector: 'yh-location-selector',
+  selector: 'location-selector',
   standalone: true,
   imports: [
     MatIconModule,
@@ -31,55 +37,67 @@ import { MatSelectChange, MatSelectModule } from '@angular/material/select';
   templateUrl: './location-selector.component.html',
   styleUrl: './location-selector.component.scss',
 })
-export class LocationSelectorComponent {
+export class LocationSelectorComponent implements OnInit {
   locationForm: FormGroup = this._fb.group({
     locations: this._fb.array([{ county: ['', Validators.required] }]),
   });
+
   locations = [{ name: 'Mombasa', id: 0, pid: 0 }];
+  locations$: Observable<Location[]> = this._locationSelectorService.locations$;
   currentLocationIndex = 0;
 
-  constructor(private _fb: FormBuilder) {}
+  constructor(
+    private _fb: FormBuilder,
+    private _locationSelectorService: LocationSelectorService
+  ) {}
+
+  ngOnInit(): void {
+    this._locationSelectorService.getLocationsByParentId(0);
+  }
 
   get locationsCtrls() {
     return this.locationForm.get('locations') as FormArray;
   }
 
-  addLocation(location: FormControl) {
+  addLocationCtrl(location: FormControl) {
     this.locationsCtrls.push(location);
   }
 
   onSelectLocation(selectionChangeEvt: MatSelectChange) {
     switch (this.currentLocationIndex) {
       case 0:
-        this.addLocation(
+        this.addLocationCtrl(
           this._fb.control({ subCounty: ['', Validators.required] })
         );
         break;
 
       case 1:
-        this.addLocation(
+        this.addLocationCtrl(
           this._fb.control({ location: ['', Validators.required] })
         );
         break;
 
       case 2:
-        this.addLocation(this._fb.control({ area: ['', Validators.required] }));
-        break;
-
-      case 3:
+        this.addLocationCtrl(
+          this._fb.control({ area: ['', Validators.required] })
+        );
         break;
 
       default:
         break;
     }
+
+    this._locationSelectorService.selectLocation(selectionChangeEvt.value);
   }
 
   removeLocation(index: number) {
-    let lastLocationIndex = this.currentLocationIndex;
-
     do {
-      this.locationsCtrls.removeAt(lastLocationIndex--);
-    } while (lastLocationIndex >= index);
+      this.locationsCtrls.removeAt(this.currentLocationIndex--);
+    } while (this.currentLocationIndex >= index);
+    const selectedLocation: Location = this.locationsCtrls
+      .at(this.currentLocationIndex)
+      .getRawValue();
+    this._locationSelectorService.selectLocation(selectedLocation);
   }
 
   locationName(index: number) {

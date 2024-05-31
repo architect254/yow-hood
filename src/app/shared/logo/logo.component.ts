@@ -19,7 +19,7 @@ import {
 import { Subscription, interval } from 'rxjs';
 
 @Component({
-  selector: 'yh-logo',
+  selector: 'logo',
   standalone: true,
   animations: [
     trigger('animationCompleted', [

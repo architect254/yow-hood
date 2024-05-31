@@ -19,7 +19,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LogoComponent } from '../../shared/logo/logo.component';
 
 @Component({
-  selector: 'yh-layout',
+  selector: 'layout',
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   standalone: true,

@@ -4,8 +4,8 @@
     <mat-form-field appearance="outline" formArrayName="locations" class="selector-control reduced-size">
       <mat-label>{{locationName($index)}}</mat-label>
       <mat-select (selectionChange)="onSelectLocation($event)">
-        @for (option of locations; track option) {
-        <mat-option [value]="option.id">{{option.name}}</mat-option>
+        @for (location of (locations$ | async); track location) {
+        <mat-option [value]="location">{{location.name}}</mat-option>
         }
       </mat-select>
       <mat-icon matPrefix>apartment</mat-icon>

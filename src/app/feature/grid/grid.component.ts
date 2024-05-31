@@ -2,14 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'yh-grid',
+  selector: 'grid',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, ScrollingModule],
+  imports: [ScrollingModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss',
 })
