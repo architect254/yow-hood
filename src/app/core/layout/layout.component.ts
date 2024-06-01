@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -18,9 +19,9 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LogoComponent } from '../../shared/logo/logo.component';
 
 @Component({
-  selector: 'yh-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss',
+  selector: 'layout',
+  templateUrl: './layout.component.html',
+  styleUrl: './layout.component.scss',
   standalone: true,
   imports: [
     MatToolbarModule,
@@ -31,6 +32,7 @@ import { LogoComponent } from '../../shared/logo/logo.component';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     ReactiveFormsModule,
     AsyncPipe,
     RouterOutlet,
@@ -39,7 +41,7 @@ import { LogoComponent } from '../../shared/logo/logo.component';
     MatButtonToggleModule,
   ],
 })
-export class NavigationComponent implements OnInit {
+export class LayoutComponent implements OnInit {
   private breakpointObserver = inject(BreakpointObserver);
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -49,14 +51,19 @@ export class NavigationComponent implements OnInit {
     );
 
   pageTitle: string = ``;
-  searchCtrl: FormControl = new FormControl();
+
+  houseTypes = [{id:0, name:'Any'}];
+  minRentCtrl: FormControl = new FormControl();
+  maxRentCtrl: FormControl = new FormControl();
+
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.data.subscribe((data: Data) => {
-      console.log('DATA',data,this.route.url)
+    this.route.firstChild?.data.subscribe((data: Data) => {
       this.pageTitle = data['title'];
     });
   }
+
+  onSelectTypeOfHouse(type: any) {}
 }

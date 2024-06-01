@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "yh",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -52,11 +52,14 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "8kB",
+                  "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json",
+              "appShell": true,
+              "subresourceIntegrity": true
             },
             "development": {
               "optimization": false,
@@ -104,6 +107,32 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy"
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/yow-hood-server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "defaultConfiguration": "production",
+          "options": {
+            "route": "shell"
+          },
+          "configurations": {
+            "development": {
+              "browserTarget": "yow-hood:build:development",
+              "serverTarget": "yow-hood:server:development"
+            },
+            "production": {
+              "browserTarget": "yow-hood:build:production",
+              "serverTarget": "yow-hood:server:production"
+            }
+          }
+        
         }
       }
     }

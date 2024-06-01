@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+
+.card {
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    &:hover {
+        @include mat.elevation(4);
+    }
+
+    .title {
+        margin-top: 16px;
+    }
+
+    .info {
+        .article {
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+            gap: 16px;
+
+            .label {
+                color: lighten(black, 45%);
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+:host {
+    ::ng-deep {
+        .mat-mdc-card {
+            border-radius: calc(var(--mdc-elevated-card-container-shape) - 8px);
+        }
+    }
+}

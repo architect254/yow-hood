@@ -1,1 +1,3 @@
-<yh-grid></yh-grid>
+<grid>
+    <card *cdkVirtualFor="let home of (homes$ | async)"></card>
+</grid>

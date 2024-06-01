@@ -1,18 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs';
+
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 import { GridComponent } from '../../feature/grid/grid.component';
-import { PageDirective } from '../../core/page/page.directive';
+import { PageDirective } from '../../shared/page/page.directive';
+import { CardComponent } from '../../feature/card/card.component';
+import { HomeRentalsService } from './home-rentals.service';
+import { Home } from '../../model/home';
+import { Title, Meta } from '@angular/platform-browser';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'yh-home-rentals',
+  selector: 'home-rentals',
   standalone: true,
-  imports: [GridComponent],
+  imports: [ScrollingModule, GridComponent, CardComponent, AsyncPipe],
   templateUrl: './home-rentals.component.html',
   styleUrl: './home-rentals.component.scss',
 })
 export class HomeRentalsComponent extends PageDirective implements OnInit {
-  override ngOnInit(): void {
-    
+  homes$: Observable<Home[]> = this._homeRentalsService.homes$;
+  constructor(
+    private _title: Title,
+    private _meta: Meta,
+    private _homeRentalsService: HomeRentalsService
+  ) {
+    super(_title, _meta);
   }
+  override ngOnInit(): void {}
 
   override setTwitterCardMeta(): void {
     this.setMeta([
