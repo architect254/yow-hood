@@ -1,18 +1,28 @@
 :host {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 32px;
+    height: 100%;
+    width: 100%;
 }
 
-.name {
-    stroke-width: 4;
+@supports (-webkit-text-stroke: 1px #00458f) {
+    .name {
+        font-size: 8em !important;
 
-    .start {
-        stroke: blue;
-        fill: lightblue;
-    }
+        .start {
+            color: #00458f;
+            font-weight: bolder;
+        }
 
-    .end {
-        fill: blue;
+        .end {
+            font-weight: bold;
+            -webkit-text-stroke: 2px #00458f;
+            -webkit-text-fill-color: white;
+            -webkit-text-stroke-width: 2px;
+
+        }
     }
 }

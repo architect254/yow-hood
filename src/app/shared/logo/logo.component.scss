@@ -9,11 +9,9 @@
 }
 
 .logo-main {
-  stroke: #00458f;
-  fill: #0074e9
 }
 
 .logo-separator {
   stroke: lighten($color: #00458f, $amount: 70);
-  fill: darken($color: #0074e9, $amount: 20)
+  fill: darken($color: #0074e9, $amount: 20);
 }
