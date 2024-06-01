@@ -16,6 +16,16 @@ const serverConfig: ApplicationConfig = {
                 component: AppShellComponent
             }
         ]
+    },
+    {
+        provide: ROUTES,
+        multi: true,
+        useValue: [
+            {
+                path: 'shell',
+                component: AppShellComponent
+            }
+        ]
     }
 ]
 };

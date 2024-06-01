@@ -7,7 +7,7 @@ import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'grid',
   standalone: true,
-  imports: [],
+  imports: [ScrollingModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss',
 })
@@ -24,7 +24,8 @@ export class GridComponent implements OnInit {
   ngOnInit(): void {
     const toolbarHeight = this.document.getElementById('toolbar')?.offsetHeight;
     const headerHeight = this.document.getElementById('header')?.offsetHeight;
-    const containerWidth = this.document.getElementById('container')?.offsetWidth;
+    const containerWidth =
+      this.document.getElementById('container')?.offsetWidth;
 
     if (toolbarHeight && headerHeight && containerWidth) {
       this.gridHeight = window.innerHeight - (toolbarHeight + headerHeight);
@@ -32,7 +33,7 @@ export class GridComponent implements OnInit {
     }
   }
 
-  onScrolledIndexChange(index: number) {
+  onScrolledIndexChange(index: any) {
     this.scrolledIndex = index;
   }
 }

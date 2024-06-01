@@ -46,18 +46,19 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "8kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all",
               "serviceWorker": "ngsw-config.json",
-              "appShell": true
+              "appShell": true,
+              "subresourceIntegrity": true
             },
             "development": {
               "optimization": false,
@@ -105,6 +106,32 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy"
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/yow-hood-server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "defaultConfiguration": "production",
+          "options": {
+            "route": "shell"
+          },
+          "configurations": {
+            "development": {
+              "browserTarget": "yow-hood:build:development",
+              "serverTarget": "yow-hood:server:development"
+            },
+            "production": {
+              "browserTarget": "yow-hood:build:production",
+              "serverTarget": "yow-hood:server:production"
+            }
+          }
+        
         }
       }
     }
