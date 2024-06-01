@@ -7,7 +7,7 @@ import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'grid',
   standalone: true,
-  imports: [ScrollingModule],
+  imports: [],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss',
 })

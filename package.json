@@ -27,6 +27,8 @@
     "@angular/ssr": "^18.0.1",
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
+    "faker": "^6.6.6",
+    "json-server": "^1.0.0-beta.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-scrollbar": "^14.1.0",
     "rxjs": "~7.8.0",

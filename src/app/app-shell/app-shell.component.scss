@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    stroke-width: 4;
+
+    .start {
+        stroke: blue;
+        fill: lightblue;
+    }
+
+    .end {
+        fill: blue;
+    }
+}

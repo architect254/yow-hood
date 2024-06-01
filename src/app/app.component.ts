@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { PageDirective } from './shared/page/page.directive';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ScrollingModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

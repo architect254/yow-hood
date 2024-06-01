@@ -15,7 +15,7 @@ import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'home-rentals',
   standalone: true,
-  imports: [ScrollingModule, GridComponent, CardComponent, AsyncPipe],
+  imports: [ GridComponent, CardComponent, AsyncPipe],
   templateUrl: './home-rentals.component.html',
   styleUrl: './home-rentals.component.scss',
 })
