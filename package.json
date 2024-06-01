@@ -8,7 +8,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:yow-hood": "node dist/yow-hood/server/server.mjs"
+    "serve:ssr:yow-hood": "node dist/yow-hood/server/server.mjs",
+    "app-shell:dev": "ng run yow-hood:app-shell:development",
+    "app-shell:prod": "ng run yow-hood:app-shell:production"
   },
   "private": true,
   "dependencies": {
