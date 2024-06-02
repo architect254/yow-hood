@@ -12,8 +12,8 @@
     "serve:ssr:yow-hood": "node dist/yow-hood/server/server.mjs",
     "app-shell:dev": "ng run yow-hood:app-shell:development",
     "app-shell:prod": "ng run yow-hood:app-shell:production",
-    "insert": "node ./mock/insert-into-db.js",
-    "server": "json-server --watch ./mock/database.json"
+    "insert": "node --max-old-space-size=8000 ./mock_DB/insert-into-db.js",
+    "server": "json-server --watch ./mock_DB/database.json"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +49,7 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
     "angular-cli-ghpages": "^2.0.0",
+    "bfj": "^8.0.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
