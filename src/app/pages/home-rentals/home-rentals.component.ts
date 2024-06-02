@@ -28,7 +28,11 @@ export class HomeRentalsComponent extends PageDirective implements OnInit {
   ) {
     super(_title, _meta);
   }
-  override ngOnInit(): void {}
+  override ngOnInit(): void {
+    super.ngOnInit();
+
+    this._homeRentalsService.selectAllHomesDummy();
+  }
 
   override setTwitterCardMeta(): void {
     this.setMeta([

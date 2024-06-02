@@ -2,6 +2,7 @@
   "name": "yow-hood",
   "author": "Jared Bada",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +11,9 @@
     "test": "ng test",
     "serve:ssr:yow-hood": "node dist/yow-hood/server/server.mjs",
     "app-shell:dev": "ng run yow-hood:app-shell:development",
-    "app-shell:prod": "ng run yow-hood:app-shell:production"
+    "app-shell:prod": "ng run yow-hood:app-shell:production",
+    "insert": "node ./mock/insert-into-db.js",
+    "server": "json-server --watch ./mock/database.json"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +30,7 @@
     "@angular/router": "^18.0.0",
     "@angular/service-worker": "^18.0.0",
     "@angular/ssr": "^18.0.1",
+    "@faker-js/faker": "^8.4.1",
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
     "faker": "^6.6.6",

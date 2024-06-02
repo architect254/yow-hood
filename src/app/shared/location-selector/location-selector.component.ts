@@ -42,7 +42,6 @@ export class LocationSelectorComponent implements OnInit {
     locations: this._fb.array([{ county: ['', Validators.required] }]),
   });
 
-  locations = [{ name: 'Mombasa', id: 0, pid: 0 }];
   locations$: Observable<Location[]> = this._locationSelectorService.locations$;
   currentLocationIndex = 0;
 
@@ -52,7 +51,7 @@ export class LocationSelectorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._locationSelectorService.getLocationsByParentId(0);
+    this._locationSelectorService.selectAllLocationsDummy();
   }
 
   get locationsCtrls() {

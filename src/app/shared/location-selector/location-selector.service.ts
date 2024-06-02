@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subscription,
+  catchError,
+  throwError,
+} from 'rxjs';
 
 import { Location } from '../../model/location';
 
@@ -11,26 +17,52 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class LocationSelectorService extends LocationService {
-  API_URL: string = `${this.BASE_URL}/select`;
+  API_URL: string = `${this.BASE_URL}/locations`;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
 
-  locations$: Observable<Location[]> = new BehaviorSubject([]).asObservable();
+  $locations: BehaviorSubject<Location[]> = new BehaviorSubject<Location[]>([]);
+
+  get locations$(): Observable<Location[]> {
+    return this.$locations.asObservable();
+  }
 
   getAllLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>(this.API_URL,this.httpOptions).pipe(catchError(this.errorHandler));
+    return this.http
+      .get<Location[]>(this.API_URL, this.httpOptions)
+      .pipe(catchError(this.errorHandler));
   }
 
   getLocationsByParentId(parentId: number | string): Observable<Location[]> {
-    return this.http.get<Location[]>(`${this.API_URL}/${parentId}`).pipe(catchError(this.errorHandler));
+    return this.http
+      .get<Location[]>(`${this.API_URL}/${parentId}`)
+      .pipe(catchError(this.errorHandler));
   }
 
   selectLocation(location: Location): void {
     this.selectedLocation = location;
-    this.locations$ = this.getLocationsByParentId(location.id);
+    this.$subscriptions$.add(
+      this.getLocationsByParentId(location.id).subscribe(
+        (locations: Location[]) => {
+          this.$locations.next(locations);
+        }
+      )
+    );
+  }
+
+  selectAllLocationsDummy(): void {
+    this.$subscriptions$.add(
+      this.getAllLocations().subscribe(
+        (locations: Location[]) => {
+          console.log(`LOKATIONS`, locations);
+          
+          this.$locations.next(locations);
+        }
+      )
+    );
   }
 
   errorHandler(error: HttpErrorResponse) {
@@ -43,6 +75,6 @@ export class LocationSelectorService extends LocationService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     console.log(errorMessage);
-    return throwError(errorMessage);
+    return throwError(() => errorMessage);
   }
 }

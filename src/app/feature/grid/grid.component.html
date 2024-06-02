@@ -1,13 +1,3 @@
-<cdk-virtual-scroll-viewport
-  itemSize="50"
-  minBufferPx="200"
-  maxBufferPx="400"
-  (scrolledIndexChange)="onScrolledIndexChange($event)"
-  [style.--grid-height]="gridHeight + 'px'"
-  [style.--grid-width]="gridWidth + 'px'"
-  class="viewport"
->
-  <section class="grid">
-    <ng-content></ng-content>
-  </section>
-</cdk-virtual-scroll-viewport>
+<section class="grid">
+  <ng-content></ng-content>
+</section>

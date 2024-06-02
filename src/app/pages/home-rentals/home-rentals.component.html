@@ -1,3 +1,12 @@
-<grid>
-    <card *cdkVirtualFor="let home of (homes$ | async)"></card>
-</grid>
+<cdk-virtual-scroll-viewport
+  itemSize="50"
+  minBufferPx="200"
+  maxBufferPx="400"
+  [style.--grid-height]="1200 + 'px'"
+  [style.--grid-width]="900 + 'px'"
+  class="viewport"
+>
+  <grid>
+    <card *cdkVirtualFor="let home of homes$ | async" [content]="home"></card>
+  </grid>
+</cdk-virtual-scroll-viewport>

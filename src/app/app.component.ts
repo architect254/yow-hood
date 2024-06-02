@@ -1,13 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, InjectionToken } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { PageDirective } from './shared/page/page.directive';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { environment } from '../environments/environment';
+
+export const API_BASE_URL = new InjectionToken('Dynamic API Base Url');
+
+const apiFactory = () => {
+  if (environment.production) {
+    return ``;
+  } else {
+    return `localhost:3000`;
+  }
+};
 
 @Component({
   selector: 'root',
   standalone: true,
   imports: [RouterOutlet, ScrollingModule],
+  providers: [{ provide: API_BASE_URL, useFactory: apiFactory }],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
