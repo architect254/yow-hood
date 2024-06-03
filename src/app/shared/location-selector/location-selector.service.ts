@@ -55,13 +55,9 @@ export class LocationSelectorService extends LocationService {
 
   selectAllLocationsDummy(): void {
     this.$subscriptions$.add(
-      this.getAllLocations().subscribe(
-        (locations: Location[]) => {
-          console.log(`LOKATIONS`, locations);
-          
-          this.$locations.next(locations);
-        }
-      )
+      this.getAllLocations().subscribe((locations: Location[]) => {
+        this.$locations.next(locations);
+      })
     );
   }
 
@@ -74,7 +70,6 @@ export class LocationSelectorService extends LocationService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.log(errorMessage);
     return throwError(() => errorMessage);
   }
 }

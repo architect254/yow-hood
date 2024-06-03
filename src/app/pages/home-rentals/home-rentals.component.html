@@ -2,11 +2,11 @@
   itemSize="50"
   minBufferPx="200"
   maxBufferPx="400"
-  [style.--grid-height]="1200 + 'px'"
-  [style.--grid-width]="900 + 'px'"
+  [style.height]="gridHeight + 'px'"
+  [style.width]="gridWidth + 'px'"
   class="viewport"
 >
-  <grid>
+  <grid [style.height]="gridHeight + 'px'" [style.width]="gridWidth + 'px'">
     <card *cdkVirtualFor="let home of homes$ | async" [content]="home"></card>
   </grid>
 </cdk-virtual-scroll-viewport>

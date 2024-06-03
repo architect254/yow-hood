@@ -11,7 +11,7 @@ import { Home } from '../../model/home';
   providedIn: 'root',
 })
 export class HomeRentalsService extends LocationSelectorService {
-  override API_URL: string = `/public/database.json`;
+  override API_URL: string = `${this.BASE_URL}/homes`;
 
   $homes: BehaviorSubject<Home[]> = new BehaviorSubject<Home[]>([]);
 

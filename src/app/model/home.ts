@@ -1,6 +1,8 @@
 export interface Home {
-  type: string;
-  avgRoomSize: number;
+  id: string;
+  locationId: string;
+  desc: string;
+  rooms: number;
   rent: number;
-  displayImageUrl: string;
+  image_url: string;
 }

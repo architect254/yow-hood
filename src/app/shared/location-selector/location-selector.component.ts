@@ -39,46 +39,52 @@ import { Location } from '../../model/location';
 })
 export class LocationSelectorComponent implements OnInit {
   locationForm: FormGroup = this._fb.group({
-    locations: this._fb.array([{ county: ['', Validators.required] }]),
+    county: ['', Validators.required],
   });
 
   locations$: Observable<Location[]> = this._locationSelectorService.locations$;
-  currentLocationIndex = 0;
+  selectedLocation: Location | null = null;
+
 
   constructor(
     private _fb: FormBuilder,
     private _locationSelectorService: LocationSelectorService
   ) {}
 
+  getControl(name:string){ return this.locationForm.get(name)}
+
   ngOnInit(): void {
     this._locationSelectorService.selectAllLocationsDummy();
   }
 
-  get locationsCtrls() {
-    return this.locationForm.get('locations') as FormArray;
+  addLocationFormCtrl(location: string, control: FormControl) {
+    this.locationForm.addControl(location, control);
   }
 
-  addLocationCtrl(location: FormControl) {
-    this.locationsCtrls.push(location);
+  removeLocationFormCtrl(name: string) {
+    this.locationForm.removeControl(name);
   }
 
   onSelectLocation(selectionChangeEvt: MatSelectChange) {
-    switch (this.currentLocationIndex) {
+    switch (selectionChangeEvt.value.level) {
       case 0:
-        this.addLocationCtrl(
-          this._fb.control({ subCounty: ['', Validators.required] })
+        this.addLocationFormCtrl(
+          `subCounty`,
+          this._fb.control(['', Validators.required])
         );
         break;
 
       case 1:
-        this.addLocationCtrl(
-          this._fb.control({ location: ['', Validators.required] })
+        this.addLocationFormCtrl(
+          `location`,
+          this._fb.control(['', Validators.required])
         );
         break;
 
       case 2:
-        this.addLocationCtrl(
-          this._fb.control({ area: ['', Validators.required] })
+        this.addLocationFormCtrl(
+          `area`,
+          this._fb.control(['', Validators.required])
         );
         break;
 
@@ -89,41 +95,25 @@ export class LocationSelectorComponent implements OnInit {
     this._locationSelectorService.selectLocation(selectionChangeEvt.value);
   }
 
-  removeLocation(index: number) {
-    do {
-      this.locationsCtrls.removeAt(this.currentLocationIndex--);
-    } while (this.currentLocationIndex >= index);
-    const selectedLocation: Location = this.locationsCtrls
-      .at(this.currentLocationIndex)
-      .getRawValue();
-    this._locationSelectorService.selectLocation(selectedLocation);
-  }
-
-  locationName(index: number) {
-    if (index >= this.currentLocationIndex) {
-      this.currentLocationIndex = index;
+  removeLocationCtrl(name: string) {
+    if (name == `area`) {
+      this.removeLocationFormCtrl(name);
+      this.selectedLocation = this.locationForm.get(`location`)?.getRawValue();
+    }
+    if (name == `location`) {
+      this.removeLocationFormCtrl(`area`);
+      this.removeLocationFormCtrl(name);
+      this.selectedLocation = this.locationForm.get(`subCounty`)?.getRawValue();
+    }
+    if (name == `subCounty`) {
+      this.removeLocationFormCtrl(`area`);
+      this.removeLocationFormCtrl(`location`);
+      this.removeLocationFormCtrl(name);
+      this.selectedLocation = this.locationForm.get(`county`)?.getRawValue();
     }
 
-    switch (index) {
-      case 0:
-        return 'County';
-        break;
-
-      case 1:
-        return 'Sub-County';
-        break;
-
-      case 2:
-        return 'Location';
-        break;
-
-      case 3:
-        return 'Area';
-        break;
-
-      default:
-        return 'Out Of Scope Error';
-        break;
+    if (this.selectedLocation) {
+      this._locationSelectorService.selectLocation(this.selectedLocation);
     }
   }
 }

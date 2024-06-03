@@ -1,24 +1,24 @@
 <mat-card class="card">
     <img
       mat-card-image
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-      alt="Lorem Ipsum"
+      [src]="content?.image_url"
+      [alt]="'image of ' + content?.desc"
     />
     <mat-card-content>
       <section class="title">
-        <h2 class="mat-headline-medium">One Bedroom Maisonette</h2>
+        <h2 class="mat-headline-medium">{{content?.desc}}</h2>
       </section>
       <section class="info">
-        @for (item of [1,2,]; track $index) {
         <section class="article">
-          @for (item of [1,2]; track $index) {
           <article>
             <div class="label mat-title-medium">number of rooms</div>
-            <div class="value mat-display-medium">10</div>
+            <div class="value mat-title-large">{{content?.rooms}}</div>
           </article>
-          }
+          <article>
+            <div class="label mat-title-medium">amount in rent</div>
+            <div class="value mat-title-large">{{content?.rent | currency:'KSH':'code'}}</div>
+          </article>
         </section>
-        }
       </section>
     </mat-card-content>
 </mat-card>

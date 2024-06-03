@@ -13,7 +13,7 @@
     "app-shell:dev": "ng run yow-hood:app-shell:development",
     "app-shell:prod": "ng run yow-hood:app-shell:production",
     "insert": "node --max-old-space-size=8000 ./mock_DB/insert-into-db.js",
-    "server": "json-server --watch ./mock_DB/database.json"
+    "server": "json-server ./mock_DB/database.json"
   },
   "private": true,
   "dependencies": {

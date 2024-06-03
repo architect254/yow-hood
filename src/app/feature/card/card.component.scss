@@ -10,6 +10,7 @@
 
     .title {
         margin-top: 16px;
+        text-transform: capitalize;
     }
 
     .info {
@@ -22,6 +23,9 @@
             .label {
                 color: lighten(black, 45%);
                 text-transform: uppercase;
+            }
+            .value{
+                text-align: center;
             }
         }
     }

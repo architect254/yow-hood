@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,8 @@ import { CardComponent } from '../../feature/card/card.component';
 import { HomeRentalsService } from './home-rentals.service';
 import { Home } from '../../model/home';
 import { Title, Meta } from '@angular/platform-browser';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DOCUMENT } from '@angular/common';
+import { GridContainerDirective } from '../../shared/grid-container/grid-container.directive';
 
 @Component({
   selector: 'home-rentals',
@@ -19,18 +20,20 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './home-rentals.component.html',
   styleUrl: './home-rentals.component.scss',
 })
-export class HomeRentalsComponent extends PageDirective implements OnInit {
+export class HomeRentalsComponent extends GridContainerDirective {
   homes$: Observable<Home[]> = this._homeRentalsService.homes$;
+
   constructor(
-    private _title: Title,
-    private _meta: Meta,
+    _title: Title,
+    _meta: Meta,
+    @Inject(DOCUMENT) _document: Document,
     private _homeRentalsService: HomeRentalsService
   ) {
-    super(_title, _meta);
+    super(_title, _meta, _document);
   }
+
   override ngOnInit(): void {
     super.ngOnInit();
-
     this._homeRentalsService.selectAllHomesDummy();
   }
 

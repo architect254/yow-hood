@@ -5,14 +5,14 @@ import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
   standalone: true,
 })
 export abstract class PageDirective implements OnInit {
-  constructor(private title: Title, private meta: Meta) {}
+  constructor(private _title: Title, private _meta: Meta) {}
 
-  setTitle(title: string){
-    this.title.setTitle(title);
+  setTitle(_title: string){
+    this._title.setTitle(_title);
   }
 
-  setMeta(meta:MetaDefinition[]){
-    this.meta.addTags(meta)
+  setMeta(_meta:MetaDefinition[]){
+    this._meta.addTags(_meta)
   }
 
   applyMetaTags(){
