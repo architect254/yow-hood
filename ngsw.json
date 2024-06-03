@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1717434912528,
+  "timestamp": 1717437089429,
   "index": "/yow-hood/index.csr.html",
   "assetGroups": [
     {
@@ -13,9 +13,8 @@
       "urls": [
         "/yow-hood/chunk-5C2PMAIJ.js",
         "/yow-hood/chunk-OERISFF7.js",
-        "/yow-hood/favicon.ico",
         "/yow-hood/index.html",
-        "/yow-hood/main-M5ZGSRXO.js",
+        "/yow-hood/main-4VNTG45V.js",
         "/yow-hood/manifest.webmanifest",
         "/yow-hood/polyfills-A7MJM4D4.js",
         "/yow-hood/styles-7PAUDKCA.css"
@@ -59,7 +58,6 @@
   "hashTable": {
     "/yow-hood/chunk-5C2PMAIJ.js": "41c6f771e626081765c91c99b624f40d2a6d66ec",
     "/yow-hood/chunk-OERISFF7.js": "ff5493834fa4fec34bd343cd71755fa663b5ecf8",
-    "/yow-hood/favicon.ico": "927bd160c82110058edd52fda3bc0859b833b470",
     "/yow-hood/icons/android-chrome-192x192.png": "a08f597587fec849e7c5db459127ebde99d53cd0",
     "/yow-hood/icons/android-chrome-512x512.png": "daa51df518c79d130945d5b0fd3761ecda767f30",
     "/yow-hood/icons/apple-touch-icon.png": "bbdb380c9d73be6663d6115be93f145b40caefb4",
@@ -81,8 +79,8 @@
     "/yow-hood/icons/mstile-70x70.png": "9cc82901c63a156110676aa8d64a299efa199096",
     "/yow-hood/icons/safari-pinned-tab.svg": "0be8bfc5c6a3ae2728c44b21f4d239354a41f760",
     "/yow-hood/images/logos/logo.png": "9ac578f22b79aab4bf68d153562431d099eedc11",
-    "/yow-hood/index.html": "40f098bc70c14fa96d5937c094e4b43f1a7e8a15",
-    "/yow-hood/main-M5ZGSRXO.js": "d372441c8f11beafc9dece8c1ecfcf3b399770b2",
+    "/yow-hood/index.html": "2fd4df2ebbdf31b856e0f740763b07f28e3a9c98",
+    "/yow-hood/main-4VNTG45V.js": "84cc47476b30817fca67f7cbcbd2fb48aac51075",
     "/yow-hood/manifest.webmanifest": "a5219d033db32c365a23d094d7713789917d2af9",
     "/yow-hood/polyfills-A7MJM4D4.js": "547053781d5952561abe68a51cc6c1a2b1b51c55",
     "/yow-hood/styles-7PAUDKCA.css": "8561d2fce53211d97fc3749d26fbf743db5509eb"
