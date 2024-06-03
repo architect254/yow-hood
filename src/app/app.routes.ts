@@ -21,6 +21,7 @@ export const routes: Routes = [
         data: { title: 'House Details' },
       },
       { path: '', redirectTo: '/home-rentals', pathMatch: 'full' },
+      { path: '**', component: NotFoundComponent },
     ],
   },
   { path: '**', component: NotFoundComponent },
