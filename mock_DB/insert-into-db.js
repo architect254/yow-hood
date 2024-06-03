@@ -55,7 +55,11 @@ export function createRandomHome() {
     } House`,
     rooms: faker.number.int({ min: 2, max: 10 }),
     rent: faker.number.int({ min: 10000, max: 50000 }),
-    image_url: faker.image.unsplash.buildings(400, 320, home_types[(Math.floor(Math.random() * home_types.length)+1)]),
+    image_url: faker.image.unsplash.buildings(
+      400,
+      320,
+      home_types[Math.floor(Math.random() * home_types.length)]
+    ),
   };
 }
 
