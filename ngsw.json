@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1717437089429,
+  "timestamp": 1717523088251,
   "index": "/yow-hood/index.csr.html",
   "assetGroups": [
     {
@@ -11,10 +11,10 @@
         "ignoreVary": true
       },
       "urls": [
-        "/yow-hood/chunk-5C2PMAIJ.js",
-        "/yow-hood/chunk-OERISFF7.js",
+        "/yow-hood/chunk-6SA4KHYZ.js",
+        "/yow-hood/chunk-AZYH4HES.js",
         "/yow-hood/index.html",
-        "/yow-hood/main-4VNTG45V.js",
+        "/yow-hood/main-C65IFEO2.js",
         "/yow-hood/manifest.webmanifest",
         "/yow-hood/polyfills-A7MJM4D4.js",
         "/yow-hood/styles-7PAUDKCA.css"
@@ -23,7 +23,7 @@
     },
     {
       "name": "assets",
-      "installMode": "lazy",
+      "installMode": "prefetch",
       "updateMode": "prefetch",
       "cacheQueryOptions": {
         "ignoreVary": true
@@ -52,12 +52,53 @@
         "/yow-hood/images/logos/logo.png"
       ],
       "patterns": []
+    },
+    {
+      "name": "fonts",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/.*",
+        "https:\\/\\/fonts\\.gstatic\\.com\\/.*"
+      ]
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "api-freshness",
+      "patterns": [
+        "\\/locations\\/home-rentals"
+      ],
+      "strategy": "freshness",
+      "maxSize": 100,
+      "maxAge": 259200000,
+      "timeoutMs": 10000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    },
+    {
+      "name": "api-performance",
+      "patterns": [
+        "\\/locations\\/"
+      ],
+      "strategy": "performance",
+      "maxSize": 100,
+      "maxAge": 259200000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
   "hashTable": {
-    "/yow-hood/chunk-5C2PMAIJ.js": "41c6f771e626081765c91c99b624f40d2a6d66ec",
-    "/yow-hood/chunk-OERISFF7.js": "ff5493834fa4fec34bd343cd71755fa663b5ecf8",
+    "/yow-hood/chunk-6SA4KHYZ.js": "64163d9718eb491a1d9c14bba1961a6b662074f5",
+    "/yow-hood/chunk-AZYH4HES.js": "1ed77e25569d080f460b6876eba5136eeebb2fc6",
     "/yow-hood/icons/android-chrome-192x192.png": "a08f597587fec849e7c5db459127ebde99d53cd0",
     "/yow-hood/icons/android-chrome-512x512.png": "daa51df518c79d130945d5b0fd3761ecda767f30",
     "/yow-hood/icons/apple-touch-icon.png": "bbdb380c9d73be6663d6115be93f145b40caefb4",
@@ -79,9 +120,9 @@
     "/yow-hood/icons/mstile-70x70.png": "9cc82901c63a156110676aa8d64a299efa199096",
     "/yow-hood/icons/safari-pinned-tab.svg": "0be8bfc5c6a3ae2728c44b21f4d239354a41f760",
     "/yow-hood/images/logos/logo.png": "9ac578f22b79aab4bf68d153562431d099eedc11",
-    "/yow-hood/index.html": "2fd4df2ebbdf31b856e0f740763b07f28e3a9c98",
-    "/yow-hood/main-4VNTG45V.js": "84cc47476b30817fca67f7cbcbd2fb48aac51075",
-    "/yow-hood/manifest.webmanifest": "a5219d033db32c365a23d094d7713789917d2af9",
+    "/yow-hood/index.html": "b520f946f010f714e31cdd65578a26254f41dbf1",
+    "/yow-hood/main-C65IFEO2.js": "cf9b9e1c6a4b94cc6fe9fc464198eed31af13505",
+    "/yow-hood/manifest.webmanifest": "84d8320e9ba8472bb71e8b461d1f5b6ad00f976a",
     "/yow-hood/polyfills-A7MJM4D4.js": "547053781d5952561abe68a51cc6c1a2b1b51c55",
     "/yow-hood/styles-7PAUDKCA.css": "8561d2fce53211d97fc3749d26fbf743db5509eb"
   },
