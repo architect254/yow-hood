@@ -52,7 +52,9 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
         }
-        <header class="app-header app-name">Yow Hood</header>
+        <header class="app-header app-name">
+          <span class="start">Yow</span><span class="end">Hood</span>
+        </header>
         <span class="spacer"></span>
         <mat-nav-list class="primary-navigation">
           <a
@@ -152,7 +154,7 @@
           <input matInput type="text" [formControl]="minRentCtrl" />
           <mat-icon matPrefix>money</mat-icon>
         </mat-form-field>
-          <span class="range-separator">-</span>
+        <span class="range-separator">-</span>
         <mat-form-field appearance="outline" class="reduced-size range-field">
           <mat-label>Max Rent</mat-label>
           <input matInput type="text" [formControl]="maxRentCtrl" />
