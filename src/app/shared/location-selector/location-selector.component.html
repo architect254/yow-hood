@@ -1,11 +1,10 @@
 <form class="location-selector" (ngSubmit)="(0)" [formGroup]="locationForm">
-  <mat-form-field
-    appearance="outline"
-    formControlName="county"
-    class="selector-control reduced-size"
-  >
+  <mat-form-field appearance="outline" class="selector-control reduced-size">
     <mat-label>County</mat-label>
-    <mat-select (selectionChange)="onSelectLocation($event)">
+    <mat-select
+      (selectionChange)="onSelectLocation($event)"
+      formControlName="county"
+    >
       @for (location of (locations$ | async); track location) { @if
       (location.level == 0) {
       <mat-option [value]="location">{{ location.name }}</mat-option>
@@ -16,13 +15,12 @@
   </mat-form-field>
 
   @if (getControl('subCounty')) {
-  <mat-form-field
-    appearance="outline"
-    formControlName="subCounty"
-    class="selector-control reduced-size"
-  >
+  <mat-form-field appearance="outline" class="selector-control reduced-size">
     <mat-label>Sub County</mat-label>
-    <mat-select (selectionChange)="onSelectLocation($event)">
+    <mat-select
+      (selectionChange)="onSelectLocation($event)"
+      formControlName="subCounty"
+    >
       @for (location of (locations$ | async); track location) { @if
       (location.level == 1) {
       <mat-option [value]="location">{{ location.name }}</mat-option>
@@ -34,13 +32,12 @@
     >
   </mat-form-field>
   } @if (getControl('location')) {
-  <mat-form-field
-    appearance="outline"
-    formControlName="location"
-    class="selector-control reduced-size"
-  >
+  <mat-form-field appearance="outline" class="selector-control reduced-size">
     <mat-label>Location</mat-label>
-    <mat-select (selectionChange)="onSelectLocation($event)">
+    <mat-select
+      (selectionChange)="onSelectLocation($event)"
+      formControlName="location"
+    >
       @for (location of (locations$ | async); track location) { @if
       (location.level == 2) {
       <mat-option [value]="location">{{ location.name }}</mat-option>
@@ -52,13 +49,12 @@
     >
   </mat-form-field>
   } @if (getControl('area')) {
-  <mat-form-field
-    appearance="outline"
-    formControlName="area"
-    class="selector-control reduced-size"
-  >
+  <mat-form-field appearance="outline" class="selector-control reduced-size">
     <mat-label>Area</mat-label>
-    <mat-select (selectionChange)="onSelectLocation($event)">
+    <mat-select
+      (selectionChange)="onSelectLocation($event)"
+      formControlName="area"
+    >
       @for (location of (locations$ | async); track location) { @if
       (location.level == 3) {
       <mat-option [value]="location">{{ location.name }}</mat-option>

@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimationsAsync(),
     provideServiceWorker('ngsw-worker.js', {
-      enabled: true || !isDevMode(),
+      enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',
     }),
     provideHttpClient(withFetch()),

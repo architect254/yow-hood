@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import {
-  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -12,7 +11,6 @@ import {
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 
@@ -30,7 +28,6 @@ import { Location } from '../../model/location';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
     MatSelectModule,
     AsyncPipe,
   ],
@@ -45,20 +42,21 @@ export class LocationSelectorComponent implements OnInit {
   locations$: Observable<Location[]> = this._locationSelectorService.locations$;
   selectedLocation: Location | null = null;
 
-
   constructor(
     private _fb: FormBuilder,
     private _locationSelectorService: LocationSelectorService
   ) {}
 
-  getControl(name:string){ return this.locationForm.get(name)}
+  getControl(name: string) {
+    return this.locationForm.get(name);
+  }
 
   ngOnInit(): void {
     this._locationSelectorService.selectAllLocationsDummy();
   }
 
   addLocationFormCtrl(location: string, control: FormControl) {
-    this.locationForm.addControl(location, control);
+    this.locationForm.addControl(location, control, { emitEvent: true });
   }
 
   removeLocationFormCtrl(name: string) {

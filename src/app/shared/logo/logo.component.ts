@@ -50,30 +50,31 @@ import {
       transition(
         'start <=> end',
         query(
-          '.logo-main',
-          stagger(1000, [
-            animate(
-              '1000ms linear',
-              keyframes([
-                style({
-                  stroke: '#00458f',
-                  fill: 'none',
-                  offset: 0,
-                }),
-                style({
-                  strokeDashoffset: 2000,
-                  offset: 0.5,
-                }),
-                style({ strokeDashoffset: 1000, offset: 0.8 }),
-                style({
-                  strokeDashoffset: 0,
-                  stroke: '#00458f',
-                  fill: '#0074e9',
-                  offset: 1,
-                }),
-              ])
-            ),
-          ])
+          '.logo',
+          animate(
+            '1000ms linear',
+            keyframes([
+              style({
+                stroke: '#00458f',
+                fill: 'none',
+                strokeDasharray: 10,
+                strokeDashoffset: 10,
+                offset: 0,
+              }),
+              style({
+                strokeDasharray: 20,
+                strokeDashoffset: 10,
+                offset: 0.5,
+              }),
+              style({ strokeDasharray: 5, strokeDashoffset: 0, offset: 0.8 }),
+              style({
+                strokeDashoffset: 100,
+                stroke: '#00458f',
+                fill: '#0074e9',
+                offset: 1,
+              }),
+            ])
+          )
         )
       ),
     ]),
@@ -82,27 +83,27 @@ import {
   styleUrl: './logo.component.scss',
 })
 export class LogoComponent implements OnInit, OnDestroy {
-  @Input() size = 200;
-  @Input() animating = false;
+  @Input() size = 500;
+  @Input() animating = true;
 
   animated = false;
   $subscription$: Subscription = new Subscription();
 
   constructor(appRef: ApplicationRef, zone: NgZone) {
-   if (this.animating) {
-    this.$subscription$.add(
-      appRef.isStable
-        .pipe(
-          first((stable) => stable),
-          switchMap(() => timer(0, 2000))
-        )
-        .subscribe((t) =>
-          zone.run(() => {
-            this.animated = !this.animated;
-          })
-        )
-    );
-   }
+    if (this.animating) {
+      this.$subscription$.add(
+        appRef.isStable
+          .pipe(
+            first((stable) => stable),
+            switchMap(() => timer(0, 2000))
+          )
+          .subscribe((t) =>
+            zone.run(() => {
+              this.animated = !this.animated;
+            })
+          )
+      );
+    }
   }
 
   ngOnInit(): void {}

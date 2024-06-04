@@ -6,10 +6,14 @@
     gap: 32px;
     height: 100%;
     width: 100%;
+    position: absolute;
 }
 
 @supports (-webkit-text-stroke: 1px #00458f) {
     .name {
+        position: relative;
+        top: -10%;
+        font-family: 'Poppins' sans-serif;
         font-size: 8em !important;
 
         .start {

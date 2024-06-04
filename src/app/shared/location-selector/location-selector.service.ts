@@ -63,12 +63,14 @@ export class LocationSelectorService extends LocationService {
 
   errorHandler(error: HttpErrorResponse) {
     let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
+    if (error.error instanceof HttpErrorResponse) {
+      // Get server-side error
+      errorMessage = `${error.status} - ${error.statusText || ''}: ${
+        error.message
+      }`;
+    } else {
       // Get client-side error
       errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(() => errorMessage);
   }

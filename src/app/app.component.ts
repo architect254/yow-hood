@@ -1,4 +1,9 @@
-import { Component, InjectionToken } from '@angular/core';
+import {
+  ApplicationRef,
+  Component,
+  InjectionToken,
+  NgZone,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { PageDirective } from './shared/page/page.directive';
@@ -6,6 +11,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { environment } from '../environments/environment';
 import { Title, Meta } from '@angular/platform-browser';
 import { SwUpdate } from '@angular/service-worker';
+import { Subscription, first } from 'rxjs';
+import { AppShellComponent } from './app-shell/app-shell.component';
 
 export const API_BASE_URL = new InjectionToken('Dynamic API Base Url');
 
@@ -20,18 +27,31 @@ const apiFactory = () => {
 @Component({
   selector: 'root',
   standalone: true,
-  imports: [RouterOutlet, ScrollingModule],
+  imports: [RouterOutlet, ScrollingModule, AppShellComponent],
   providers: [{ provide: API_BASE_URL, useFactory: apiFactory }],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent extends PageDirective {
-  constructor(_title: Title, _meta: Meta, private swUpdate: SwUpdate) {
-    super(_title, _meta);
-    this.checkForNewVersion();
 
-    // Check for new version every minute
-    setInterval(() => this.checkForNewVersion(), 60 * 1000);
+  constructor(
+    _title: Title,
+    _meta: Meta,
+    appRef: ApplicationRef,
+    zone: NgZone,
+    private swUpdate: SwUpdate
+  ) {
+    super(_title, _meta);
+    this.$subscription$.add(
+      appRef.isStable.pipe(first((stable) => stable)).subscribe((t) =>
+        zone.run(() => {
+          this.checkForNewVersion();
+
+          // Check for new version every minute
+          setInterval(() => this.checkForNewVersion(), 60 * 1000);
+        })
+      )
+    );
   }
 
   checkForNewVersion = async () => {
@@ -49,7 +69,7 @@ export class AppComponent extends PageDirective {
         }
       }
     } catch (error) {
-      console.log(
+      console.error(
         `Service Worker - Error when checking for new version of the application: `,
         error
       );
