@@ -13,7 +13,11 @@
     "app-shell:dev": "ng run yow-hood:app-shell:development",
     "app-shell:prod": "ng run yow-hood:app-shell:production",
     "insert": "node --max-old-space-size=8000 ./mock_DB/insert-into-db.js",
-    "server": "json-server ./mock_DB/database.json"
+    "server": "json-server ./mock_DB/database.json",
+    "ngsw-config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
+    "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
+    "build-prod-ngsw": "ng build --prod && npm run ngsw-config && npm run ngsw-copy",
+    "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 8080"
   },
   "private": true,
   "dependencies": {
