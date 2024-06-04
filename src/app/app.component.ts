@@ -4,6 +4,8 @@ import { RouterOutlet } from '@angular/router';
 import { PageDirective } from './shared/page/page.directive';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { environment } from '../environments/environment';
+import { Title, Meta } from '@angular/platform-browser';
+import { SwUpdate } from '@angular/service-worker';
 
 export const API_BASE_URL = new InjectionToken('Dynamic API Base Url');
 
@@ -24,6 +26,36 @@ const apiFactory = () => {
   styleUrl: './app.component.scss',
 })
 export class AppComponent extends PageDirective {
+  constructor(_title: Title, _meta: Meta, private swUpdate: SwUpdate) {
+    super(_title, _meta);
+    this.checkForNewVersion();
+
+    // Check for new version every minute
+    setInterval(() => this.checkForNewVersion(), 60 * 1000);
+  }
+
+  checkForNewVersion = async () => {
+    try {
+      // Check if Service Worker is supported by the Browser
+      if (this.swUpdate.isEnabled) {
+        // Check if new version is available
+        const isNewVersion = await this.swUpdate.checkForUpdate();
+        if (isNewVersion) {
+          // Check if new version is activated
+          const isNewVersionActivated = await this.swUpdate.activateUpdate();
+
+          // Reload the application with new version if new version is activated
+          if (isNewVersionActivated) window.location.reload();
+        }
+      }
+    } catch (error) {
+      console.log(
+        `Service Worker - Error when checking for new version of the application: `,
+        error
+      );
+      window.location.reload();
+    }
+  };
   override setTwitterCardMeta(): void {
     this.setMeta([
       {
