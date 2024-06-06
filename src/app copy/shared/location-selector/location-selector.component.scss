@@ -1,0 +1,11 @@
+.location-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+
+    .selector-control {
+      width: 220px;
+    }
+  }
+
